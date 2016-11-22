@@ -27,7 +27,8 @@ class ScoreMatrix:
 
 
 def align_global(s, t, score_matrix):
-    print('global')
+    print(s)
+    print(t)
     s = '-' + s
     t = '-' + t
     num_rows = len(s)
@@ -51,28 +52,46 @@ def align_global(s, t, score_matrix):
             p[row, col] = np.argmax(vals)
             v[row, col] = max_val
 
+    # print(v)
+    # print(p)
+
     # find optimal alignment:
     row = num_rows - 1
     col = num_cols - 1
-    top = bottom = ''
+    top = []
+    bottom = []
     while row > 0 and col > 0:
         if p[row, col] == 0:
-            top = s[row] + top
-            bottom = t[col] + bottom
+            top.append(s[row])
+            bottom.append(t[col])
             row -= 1
             col -= 1
         elif p[row, col] == 1:
-            top = s[row] + top
-            bottom = '-' + bottom
+            top.append(s[row])
+            bottom.append('-')
             row -= 1
         elif p[row, col] == 2:
-            top = '-' + top
-            bottom = t[col] + bottom
+            top.append('-')
+            bottom.append(t[col])
             col -= 1
-    print(top)
-    print(bottom)
+
+    print(row)
+    print(col)
+    for n in range(1, row+1):
+        top.append(s[n])
+        bottom.append('-')
+    for n in range(1, col+1):
+        top.append('-')
+        bottom.append(t[n])
+
+
+    top_str = ''.join(top[::-1])
+    bottom_str = ''.join(bottom[::-1])
+
+    print(top_str)
+    print(bottom_str)
     print(v[num_rows-1, num_cols-1])
-    return top, bottom, v[num_rows-1, num_cols-1]
+    return top_str, bottom_str, v[num_rows-1, num_cols-1]
 
 
 def align_local(seq_a, seq_b, score_matrix):
