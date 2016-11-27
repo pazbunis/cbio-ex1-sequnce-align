@@ -1,6 +1,46 @@
-	A	C	G	T	-
-A	5	-4	-4	-4	-8
-C	-4	5	-4	-4	-8
-G	-4	-4	5	-4	-8
-T	-4	-4	-4	5	-8
--	-8	-8	-8	-8	-999
+########################################
+# Program: needle
+# Rundate: Tue 22 Nov 2016 21:11:38
+# Commandline: needle
+#    [-asequence] short_a.fasta
+#    [-bsequence] short_b.fasta
+#    [-outfile] score_matrix.tsv
+#    -gapopen 8
+#    -gapextend 0
+# Align_format: srspair
+# Report_file: score_matrix.tsv
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: KJ206239.1
+# 2: NM_001310462.1
+# Matrix: EDNAFULL
+# Gap_penalty: 8.0
+# Extend_penalty: 0.0
+#
+# Length: 145
+# Identity:      63/145 (43.4%)
+# Similarity:    63/145 (43.4%)
+# Gaps:          73/145 (50.3%)
+# Score: 167.0
+# 
+#
+#=======================================
+
+KJ206239.1         1 TCGAATCG----CACGCGCGGCTCTCCTTAGAACCGGCCGGCTCCCGAAT     46
+                     |.|..|||    ||| | ||| |||.|    |.|||        ||||  
+NM_001310462.      1 TTGGGTCGGTTTCAC-C-CGG-TCTTC----ATCCG--------CCGA--     33
+
+KJ206239.1        47 AATGTTTCAGTGTTTGACAAACTCAATCGGAGGTCTCGGAAGA-------     89
+                            |  ||||| |.|||| ||| | .||||     ||||       
+NM_001310462.     34 -------C--TGTTT-AAAAAC-CAA-C-AAGGT-----AAGAGGAGGGG     65
+
+KJ206239.1        90 ---------------------------AGTATCAAAAAAAAAAAA    107
+                                                |||..|||||||||||||
+NM_001310462.     66 AGCTTTGTTGTTGTTTTAACGTGTGTTAGTGACAAAAAAAAAAAA    110
+
+
+#---------------------------------------
+#---------------------------------------
